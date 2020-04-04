@@ -204,22 +204,23 @@ while k<7:
 
 
 
-\section{Genetsko kaljenje}
-Dve osnovne metaheuristike koje pripadaju široj grupi algoritama pretage su simulirano kaljenje i genetski algoritom.Sa idejom da se iskoriste prednosti obe metoda nastaje genetsko kaljenje.Tvorac koncepta je Kenneth Price koji je 1994 u svo clanku u casopisu "Dr.Bobbs Journal" prvi put izneo ideju o spajanju simuliranog kaljenja i genetskog algoritma. \par
-Simulirano kaljenje je algoritam koji se uglavnom primenjuje kada postoji jedno optimalno rešenje, dok se genetski primenjuje u slučaju postojanja vise optimalnih rešenja.Ovu ideju koristimo u algoritmu genetskog kaljenja. \par
-Genetski algoritam kroz iteracije evoluira ka boljim rešenjima od pocetno zadatih resenja.U svakoj iteraciji neophodno je odabrati jedinke za ukrštanje i mutaciju.Algoritam genetskog kaljenja ideju simuliranog kaljenja koristi u procesu odabira jedinki.
-
+\section{Poboljsanje algoritma}
 
 \subsection{Prednosti i nedostaci simuliranog kaljenja}
-
-Prednost simuliranog kaljenja (u odnosu na klasican genetski algoritam) je dobra lokalna pretraga.(c) Ono će uvek naći najbolje rešenje u neposrednoj blizini. Međutim, to je u isto vreme i slabost, iako u teoriji ovaj algoritam može da konvergira ka globalnom optimalnom resenju. \par
+Prednost simuliranog kaljenja (u odnosu na klasican genetski algoritam) je dobra lokalna pretraga.(c) Ono će uvek naći najbolje rešenje u neposrednoj blizini. Međutim, to je u isto vreme i slabost, iako u teoriji ovaj algoritam može da konvergira ka globalnom optimalnom resenju.(c) \par
 Ovaj nedostatak može da se prevaziđe sa više zasebnih izvršavanja. Svako sledeće izvršavanje počinjemo sa novim početnim rešenjem. Na kraju uzimamo najbolji finalni rezultat. U narednim iteracijama ne koristimo znanje dobijeno u prethodnim iteracijama. To je mana ovog pristupa. \par
-Prednost genetskog algoritma u odnosu na simulirano kaljenje je i u višestrukosti rešenja. Simuliranim kaljenjem mi samo poboljšavamo jedno rešenje. Bolja je pretraga zasnovana na $m$ > 1 dobrih rešenja.
+Prednost genetskog algoritma u odnosu na simulirano kaljenje je i u višestrukosti rešenja.(c) Simuliranim kaljenjem mi samo poboljšavamo jedno rešenje. Bolja je pretraga zasnovana na $m$ > 1 dobrih rešenja.
+
+\subsection{Genetsko kaljenje}
+
+Dve osnovne metaheuristike koje pripadaju široj grupi algoritama pretage su simulirano kaljenje i genetski algoritam. Sa idejom da se iskoriste prednosti obe metoda nastaje genetsko kaljenje. Tvorac koncepta je Kenneth Price koji je 1994. u svom clanku u casopisu "Dr.Bobbs Journal" prvi put izneo ideju o spajanju simuliranog kaljenja i genetskog algoritma. \par
+Simulirano kaljenje je algoritam koji se uglavnom primenjuje kada postoji jedno optimalno rešenje, dok se genetski primenjuje u slučaju postojanja vise optimalnih rešenja. Ovu ideju koristimo u algoritmu genetskog kaljenja. \par
+Genetski algoritam kroz iteracije evoluira ka boljim rešenjima od pocetno zadatih resenja. U svakoj iteraciji neophodno je odabrati jedinke za ukrštanje i mutaciju. Algoritam genetskog kaljenja ideju simuliranog kaljenja koristi u procesu odabira jedinki.
 
 
-\subsection{Eksperimentalni rezultati??}
+\subsection{Eksperimentalni rezultati}
 
-U ovom poglavlju cemo prikazati i uporediti rezultate primene genetskog kaljenja. Primeri ce nam biti problem trgovackog putnika i lokacijski problem rutiranja inventara.  \\ 
+U ovom poglavlju cemo prikazati rezultate primene genetskog kaljenja i uporediti ih sa rezultatima dobijenih simuliranim kaljenjem i genetskim algoritmom. Primeri ce nam biti problem trgovackog putnika i lokacijski problem rutiranja inventara. Cilj je da pokazemo da je hibridizovani pristup bolji od oba zasebna algoritma.   \\ 
 
 
 \subsubsection{Problem trgovackog putnika (TSP) (c)}
@@ -251,24 +252,23 @@ Iz prikazanog mozemo videti da smo u vecini slucajeva unapredjenom varijantom do
 
 \subsubsection{Lokacijski problem rutiranja inventara (eng. \textit{Location-Inventory-Routing Problem}, LIRP) (c)}
 
-\large{Opis problema} \\ \normalsize
+\large{Opis problema}  \normalsize
 
-Lanac elektronske trgovine cine proizvodjac, robni centri i prodajni objekti. Roba koja se sa prodajnih mesta vraca u robne centre je uglavnom u dobrom stanju i posle samog prepakovanja se moze vratiti u prodaju. 
-
+Lanac elektronske trgovine cine proizvodjac, skladista i prodajni objekti. Proizvodjac salje robu skladistima, a iz njih se salje u prodajne objekte. U prodajnim objektima se roba prodaje ili putuje dalje u naredni prodajni objekat. Iz nekog od njih ako se ne proda se vraca nazad u skladiste iz kog je krenuo. Roba koja se vraca je obicno u dobrom stanju i posle samog prepakovanja moze ponovo da se vrati u prodaju. 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.3]{LIRP_Primer_Grafa.jpg}
+\includegraphics[scale=0.25]{LIRP_Primer_Grafa.jpg}
 \caption{Primer mreze lanca e-trgovine}
 \label{fig:2}
 \end{figure}
 \newpage
-Primer jedne mreze ovog lanca trgovine se nalazi na slici \ref{fig:2}. Cvor u obliku trougla predstavlja proizvodjaca, kvadrati su robni centri, a krugovi prodajna mesta. U ovom problem imamo samo jednog proizvodjaca. \par
-Poznate su nam lokacije proizvodjaca, prodajnih mesta, svih potencijalnih robnih centara (ne moramo sve da ih ukljucimo u lanac), troskovi transporta izmedju svaka dva cvora i svi ostali troskovi. Nas zadatak je da odredimo optimalan broj i lokacije robnih centara kao i rute od robnih centara do prodajnih objekata tako da troskovi budu sto manji. \par
+Primer jedne mreze ovog lanca trgovine se nalazi na slici \ref{fig:2}. Cvor u obliku trougla predstavlja proizvodjaca, kvadrati su skladista, a krugovi prodajna mesta. U ovom problem imamo samo jednog proizvodjaca. \par
+Poznate su nam lokacije proizvodjaca, prodajnih mesta, svih potencijalnih skladista (ne moramo sve da ih ukljucimo u lanac), troskovi transporta izmedju svaka dva cvora i svi ostali troskovi. Nas zadatak je da odredimo optimalan broj i lokacije skladista kao i rute od skladista do prodajnih objekata tako da troskovi budu sto manji. \par
 Na ovom problemu cemo prikazati rezultate dobijene primenom genetskog kaljenja i klasicnog genetskog algoritma. \\  \par
 
 Funkcija cilja su ukupni troskovi i nju minimizujemo. U oba algoritma se u implementaciji koristi ruletska selekcija, a funkcija prilagodjenosti je obrnuto srazmerna funkciji cilja. Implementirani su u programskom jeziku Matlab. \\
-Algoritam je testiran na podacima \textit{Gaskell 67-29x5} iz LIRP baze podataka sa Univerziteta Aveira (c). Kao sto se iz samog naziva skupa podataka moze videti, radi se o instanci problema gde imamo 29 prodajnih mesta i 5 potencijalnih robnih centara. 
+Algoritam je testiran na podacima \textit{Gaskell 67-29x5} iz LIRP baze podataka sa Univerziteta Aveira (c). Kao sto se iz samog naziva skupa podataka moze videti, radi se o instanci problema gde imamo 29 prodajnih mesta i 5 potencijalnih skladista. 
 
 \begin{figure}[h!]
 \centering
@@ -290,7 +290,7 @@ Na slici \ref{fig:3} se mogu videti najmanje vrednosti funkcije cilja u svakoj g
 
 Kod genetskog kaljenja u prvih 200 generacija imamo velika oscilovanja optimalnog resenja. Posle se ubrzo dolazi do optimuma koji se ne menja do zaustavljanja. Uz ukupan manji broj iteracija se dolazi do manje vrednosti funkcije cilja nego genetskim algoritmom.
 
-U tabeli \ref{tabela:2} se mogu videti i statistike najmanje vrednosti funkcije cilja u svim generacijama. One takodje pokazuju superiornost genetskog kaljenja. Cak je standardna devijacija znatno manja kod genetskog kaljenja, bez obzira na pocetna oscilovanja.
+U tabeli \ref{tabela:2} se mogu videti i statistike najmanjih vrednosti funkcije cilja u svim generacijama. One su takodje na strani genetskog kaljenja. Cak je standardna devijacija znatno manja kod genetskog kaljenja, bez obzira na pocetna oscilovanja.
 
 \begin{table}[ht]
 \begin{center}
@@ -304,7 +304,7 @@ U tabeli \ref{tabela:2} se mogu videti i statistike najmanje vrednosti funkcije 
 \caption{Dobijeni rezultati na problemu trgovackog putnika}
 \end{table}
 
-Isti eksperimenti su takodje pokazali da je i procesorsko vreme izvrsavanja manje kod genetskog kaljenja. Vrseni su i dalji obimniji eksperimenti koji su samo potvrdili ove zakljucke.
+Isti eksperimenti su takodje pokazali da je i procesorsko vreme izvrsavanja manje kod genetskog kaljenja. Dakle, osim sto ovaj algoritam daje bolja resenja, pokazalo se i da je racunski efikasnije. \par Vrseni su i dalji obimniji eksperimenti na ovom problemu koji su samo potvrdili sve zakljucke.
 
 
 \section{Zaključak}
@@ -315,7 +315,7 @@ problema kombinatorne optimizacije i podstakla razvoj metaheurističkih algorita
 fenomenima, kao što su metoda zasnovana na ponašanju mrava (Ant Colony Optimization –ACO), metoda zasnvana na ponašanju roja čestica (Particle Swarm Optimization –
 PSO) , metoda veštačkog imuniteta (Artificial Immune System – AIS).
 
-
+\newpage
 \addcontentsline{toc}{section}{Literatura}
 
 \appendix
@@ -324,7 +324,6 @@ PSO) , metoda veštačkog imuniteta (Artificial Immune System – AIS).
 
 \bibliographystyle{plain}
 
-\appendix
 [1] Free Software Foundation. GNU gcc, 2013. on-line at: http://gcc.
 gnu.org/.
 [2] J. Laski and W. Stanley. Software Verification and Analysis. Springer-
@@ -335,5 +334,7 @@ Entscheidungsproblem. Proceedings of the London Mathematical Society,
 [4] Xin Yao, Optimization by Genetic Annealing, Computer Sciences Laboratory
 Research School of Physical Sciences
 The Australian National University
-[5]Yanhui Li, Hao Guo, Lin Wang and Jing Fu, A Hybrid Genetic-Simulated Annealing Algorithm for the Location-Inventory-Routing Problem Considering Returns under E-Supply Chain Environment,School of Information Management, Central China Normal University, Wuhan
+[5] Yanhui Li, Hao Guo, Lin Wang and Jing Fu, 2013, A Hybrid Genetic-Simulated Annealing Algorithm for the Location-Inventory-Routing Problem Considering Returns under E-Supply Chain Environment, \textit{The Scientific World Journal}, Volume 2013, Article ID 125893
+
+
 \end{document}
