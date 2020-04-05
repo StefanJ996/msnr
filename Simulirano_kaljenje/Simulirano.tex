@@ -64,7 +64,7 @@
 \maketitle
 
 \abstract{
-U ovom radu ćemo videti kako jedna tehnika iz svakodnevnog života može da se (algoritamski) primeni u računarstvu. Kakva je njena ideja, implementacija i primena na stvarnim problemima. Takodje i kako njome mozemo unaprediti vec dobro poznate metaheuristike.}
+U ovom radu ćemo videti kako jedna tehnika iz svakodnevnog života može da se (algoritamski) primeni u problemima optimizacije. Kakva je njena ideja, implementacija i primena na stvarnim problemima. Takođe i kako njome možemo unaprediti već dobro poznate metaheuristike.}
 
 \tableofcontents
 
@@ -73,7 +73,7 @@ U ovom radu ćemo videti kako jedna tehnika iz svakodnevnog života može da se 
 \section{Uvod}
 \label{sec:uvod}
 
-\textbf{Simulirano kaljenje} (eng. \textit{Simulated Annealing}, SA) je metoda zasnovana na lokalnom pretraživanju, uz mehanizam inspirisan procesom kaljenja čelika koji omogućava izlazak iz lokalnog optimuma. Algoritam je predložen 1983. godine od strane Kirkpatrika i drugih.
+\textbf{Simulirano kaljenje} (eng. \textit{Simulated Annealing}, SA) je metoda zasnovana na lokalnom pretraživanju, uz mehanizam inspirisan procesom kaljenja čelika koji omogućava izlazak iz lokalnog optimuma. Algoritam je predložen 1983. godine od strane Kirkpatrika i drugih.\cite{sa_history_book}
 Pri procesu metalurškog kaljenja čelika cilj je oplemenjivanje metala tako da on postane čvršći. Da bi se postigla čvrstoća metala potrebno je njegovu kristalnu rešetku pomeriti tako da ima minimalnu potencijalnu energiju. Prvi korak u kaljenju čelika je zagrevanje do
 određene visoke temperature, a zatim nakon kratkog zadržavanja na toj temperaturu počinje postepeno hlađenje. Pri postepenom hlađenju atomi metala nakon procesa kaljenja formiraju
 pravilnu kristalnu rešetku i time se postiže energetski minimum kristalne rešetke. Važno je napomenuti da brzo hlađenje može da uzrokuje pucanje metala.
@@ -96,7 +96,7 @@ izbegava pogoršanje tekućeg rešenja.
 
 
 \section{Algoritam}
-Ideja implementacije algoritma simuliranog kaljenja je sledeca.U svakoj iteraciji algotitma primenjenog na diskretan problem poredimo dve vrednosti rešenja, trenutno najbolje i novo generisano rešenje. Zavisno od uslova odabira između ova dva rešenja za narednu iteraciju dobijeno rešenje prelazi u sledeću iteraciju. Proces ponavljamo  dok god se ne zadovolji uslov zaustavljanja. Uslov zaustavljanja moze biti zadat konačnim brojem iteracija ili dok se ne dostigne traženi minimum(maximum).
+Ideja implementacije algoritma\cite{sannealingbook} simuliranog kaljenja je sledeća. U svakoj iteraciji algotitma primenjenog na diskretan problem poredimo dve vrednosti rešenja, trenutno najbolje i novo generisano rešenje. Zavisno od uslova odabira između ova dva rešenja za narednu iteraciju dobijeno rešenje prelazi u sledeću iteraciju. Proces ponavljamo  dok god se ne zadovolji uslov zaustavljanja. Uslov zaustavljanja moze biti zadat konačnim brojem iteracija ili dok se ne dostigne traženi minimum(maximum).
 
 \subsection{Definisanje termina}
 Da bismo opisali specifičnosti algoritma simuliranog kaljenja uvedimo nekoliko pojmova koji će nam biti potrebni za razumevanje samog algoritma.Neka je $\Omega$ prostor mogućih rešenja,$f:\Omega \rightarrow \Re$ funkcija definisana nad prostorom $\Omega$. Cilj je pronaći  $w\in\Omega$ za koje funkcija $f$ doseže minimum(maksimum) problema na koji primenjujemo algoritam simuliranog kaljenja.Ukoliko postoji $w*\in\Omega$ za koje  važi:$$f(w*)\geq f(w) , \forall w \in \Omega$$ tada je $w*$ traženi maximum.Da bi ovakvo $w$ postojalo neophodan uslov je da funkcija $f$ bude ograničena na prostoru $\Omega$.Definišimo i funkciju $N(w)$ pomoću koje ćemo određivati susedna rešenja rešenju  $w\in\Omega$ u svakoj iteraciji algoritma pretrage novog rešenja. \par
@@ -142,24 +142,24 @@ Ponavljaj:
 Dok god nije zadovoljen uslov zaustavljanja
 
 
-\subsection{Primena algoritma simuliranog kaljenja na problem trgovačkog putnika}
+\subsection{Primena algoritma simuliranog kaljenja\cite{sannealing_tsp_application} na problem trgovačkog putnika}
 
 
-  Problem trgovačkog putnika je jedan od najizučavanijih kombinatornih problema kao i NP problema.Problem je definisan na sledeći način.
-  Data nam je lista gradova koje bi trebalo putnik da obiđe i da se vrati u grad iz kog je pošao.Takođe nam je potreban podatak koja je udajenost između svaka dva grada iz liste gradova.Naš zadatak je da pronađemo redosled obilaska gradova tako da ukupna dužina puta koji bi trebalo putnik da pređe bude minimalna.\par
-  Prvo rešenje koje se nameće je agoritam grube sile,a to je ispitivanje svih mogućih načina obilazaka gradova i odabir najbolje kombinacije za koju je ukupna dužina minimalna.Ovakvo rešenje nije isplativo zbog velike vremenske složenosti koja iznosi n! pri čemu je n broj gradovi koje bi trebalo putnik da poseti.\par
+  Problem trgovačkog putnika je jedan od najizučavanijih kombinatornih problema kao i NP problema. Problem je definisan na sledeći način.
+  Data nam je lista gradova koje bi trebalo putnik da obiđe i da se vrati u grad iz kog je pošao. Takođe nam je potreban podatak koja je udaljenost između svaka dva grada iz liste gradova. Naš zadatak je da pronađemo redosled obilaska gradova tako da ukupna dužina puta koji bi trebalo putnik da pređe bude minimalna.\par
+  Prvo rešenje koje se nameće je agoritam grube sile, a to je ispitivanje svih mogućih načina obilazaka gradova i odabir najbolje kombinacije za koju je ukupna dužina minimalna. Ovakvo rešenje nije isplativo zbog velike vremenske složenosti koja iznosi n! pri čemu je n broj gradova koje bi trebalo putnik da poseti.\par
     
-Da bi problem rešili algoritmom simuliranog kaljenja definišimo prvo šta nam predstavlja temperatura iz ovog algoritma. Temperatura kod ovog problema predstavljala bi meru slučajnosti promene putanje pri čemu se trazi najmanja putanja. Ukoliko je vrednost temperature visoka prave se i vece slučajne promene i pritom se izbegava rizik da ostanemo zaglavljeni u lokalnom optimumu, a njih ima mnogo u posmatranom problemu.Kako temperatura pada tako se spuštamo u skoro optimalni minimum. U svakom koraku kada je potrebna promena temperature njena vrednost je 0.9 puta veća od predhodne. Ovim zadovoljavamo uslov da pad temperature teži nuli kroz rast broja iteracija.\par
+Da bi problem rešili algoritmom simuliranog kaljenja definišimo prvo šta nam predstavlja temperatura iz ovog algoritma. Temperatura kod ovog problema predstavljala bi meru slučajnosti promene putanje pri čemu se trazi najmanja putanja. Ukoliko je vrednost temperature visoka prave se i veće slučajne promene i pritom se izbegava rizik da ostanemo zaglavljeni u lokalnom optimumu, a njih ima mnogo u posmatranom problemu. Kako temperatura pada tako se spuštamo u skoro optimalni minimum. U svakom koraku kada je potrebna promena temperature njena vrednost je 0.9 puta veća od predhodne. Ovim zadovoljavamo uslov da pad temperature teži nuli kroz rast broja iteracija.\par
 
-Proces kaljenja počinje stazom koja jednostavno navodi sve gradove redosledom njihovog odabira za obilazak. Na svakom temperaturnom koraku se vrši određeni broj slučajnih transformacija puta.Način transformacije puta moze biti različit.Moguće je izabrati dva grada i zameniti njihovo mesto u redosledu obilaska gradova, drugi od nacina bio bi odabrati dve pozicje koje oznacavaju segment koji će se prebaciti na određeno mesto u stazi koja predstavlja redosled obilaska, ili dati segment rotirati. Ukoliko zelimo da se vrši više načina transformacija uvodimo "softverski novčić" koji bi odredjivao vrstu transformacije. 
- Dužina modifikovanog puta se zatim izračunava i upoređuje sa stazom pre modifikacije, stvarajući veličinu koju nazivamo razliku u troškovima. Ako je ta veličina negativna, onda modifikovana putanja je kraća od originalne putanje i uvek je zamenjuje. Medjutim, ako dodje do povećanja troškova, eksponencija njegove negativne veličine deljenja sa trenutnom temperaturom upoređuje se sa jednolično raspodeljenim slučajnim brojem izmenđu 0 i 1, a ako je veće modifikovana putanja će se koristi iako je povećala troškove. U početku će prihvatanje dužeg puta biti više verovatno jer je temperatura visoka, ali kako temperatura opada biće prihvaćena samo manja povećanja troškova. Broj promena koje se testiraju na svakoj temperaturi je proizvoljan, temperatura se smanjuje i pretraga nastavlja. Nakon isprobljavanja svih mogućih scenarija na određenoj temperaturi, nisu pronadjene promene koje smanjuju dužinu puta, rešenje se smatra dovoljno dobrim i prikazuje se dobijena staza.
+Proces kaljenja počinje stazom koja jednostavno navodi sve gradove redosledom njihovog odabira za obilazak. Na svakom temperaturnom koraku se vrši određeni broj slučajnih transformacija puta. Način transformacije puta moze biti različit. Moguće je izabrati dva grada i zameniti njihovo mesto u redosledu obilaska gradova, drugi od nacina bio bi odabrati dve pozicje koje oznacavaju segment koji će se prebaciti na određeno mesto u stazi koja predstavlja redosled obilaska, ili dati segment rotirati. Ukoliko želimo da se vrši više načina transformacija uvodimo " softverski novčić " koji bi određivao vrstu transformacije. 
+ Dužina modifikovanog puta se zatim izračunava i upoređuje sa stazom pre modifikacije, stvarajući veličinu koju nazivamo razliku u troškovima. Ako je ta veličina negativna, onda modifikovana putanja je kraća od originalne putanje i uvek je zamenjuje. Međutim, ako dođe do povećanja troškova, eksponencija njegove negativne veličine deljenja sa trenutnom temperaturom upoređuje se sa jednolično raspodeljenim slučajnim brojem izmenđu 0 i 1, a ako je veće modifikovana putanja će se koristi iako je povećala troškove. U početku će prihvatanje dužeg puta biti više verovatno jer je temperatura visoka, ali kako temperatura opada biće prihvaćena samo manja povećanja troškova. Broj promena koje se testiraju na svakoj temperaturi je proizvoljan, temperatura se smanjuje i pretraga nastavlja. Nakon isprobavanja svih mogućih scenarija na određenoj temperaturi, nisu pronađene promene koje smanjuju dužinu puta, rešenje se smatra dovoljno dobrim i prikazuje se dobijena staza.
 
 \begin{primer}
 Neka nam je dato 5 gradova i matrica M koja predstavlja međusobne udaljenosti između gradova tako da je $M[i][j]$ udaljenost između gradova $i$ i $j$. Pronaći permutaciju gradova tako da polazeći iz prvog grada se preko ostalih gradova stigne u pocetni uz uslov da je pređeni put minimalni.\par
-Nacin implementacije rešenja u jeziku Python prikazan je kroz listing \ref{simple}. 
+Način implementacije rešenja u jeziku Python prikazan je kroz listing \ref{simple}. 
 \end{primer}
 
-\begin{lstlisting}[caption={Resavanje problema TSP koriscenjem SA algoritma},frame=single, label=simple]
+\begin{lstlisting}[caption={Rešavanje problema TSP korišćenjem SA algoritma},frame=single, label=simple]
 import numpy as np
 import itertools as per
 import random
@@ -205,30 +205,30 @@ while k<7:
 
 
 
-\section{Poboljsanje algoritma}
+\section{Poboljšanje algoritma}
 
 \subsection{Prednosti i nedostaci simuliranog kaljenja}
-Prednost simuliranog kaljenja (u odnosu na klasican genetski algoritam) je dobra lokalna pretraga.(c) Ono će uvek naći najbolje rešenje u neposrednoj blizini. Međutim, to je u isto vreme i slabost, iako u teoriji ovaj algoritam može da konvergira ka globalnom optimalnom resenju.(c) \par
+Prednost simuliranog kaljenja (u odnosu na klasičan genetski algoritam) je dobra lokalna pretraga.\cite{ga_vs_sa_tech_report, gannealingthesis} Ono će uvek naći najbolje rešenje u neposrednoj blizini. Međutim, to je u isto vreme i slabost, iako u teoriji ovaj algoritam može da konvergira ka globalnom optimalnom resenju.\cite{gannealingthesis} \par
 Ovaj nedostatak može da se prevaziđe sa više zasebnih izvršavanja. Svako sledeće izvršavanje počinjemo sa novim početnim rešenjem. Na kraju uzimamo najbolji finalni rezultat. U narednim iteracijama ne koristimo znanje dobijeno u prethodnim iteracijama. To je mana ovog pristupa. \par
-Prednost genetskog algoritma u odnosu na simulirano kaljenje je i u višestrukosti rešenja.(c) Simuliranim kaljenjem mi samo poboljšavamo jedno rešenje. Bolja je pretraga zasnovana na $m$ > 1 dobrih rešenja.
+Prednost genetskog algoritma u odnosu na simulirano kaljenje je i u višestrukosti rešenja.\cite{gannealingthesis} Simuliranim kaljenjem mi samo poboljšavamo jedno rešenje. Bolja je pretraga zasnovana na $m$ > 1 dobrih rešenja.
 
 \subsection{Genetsko kaljenje}
 
-Dve osnovne metaheuristike koje pripadaju široj grupi algoritama pretage su simulirano kaljenje i genetski algoritam. Sa idejom da se iskoriste prednosti obe metoda nastaje genetsko kaljenje. Tvorac koncepta je Kenneth Price koji je 1994. u svom clanku u casopisu "Dr.Bobbs Journal" prvi put izneo ideju o spajanju simuliranog kaljenja i genetskog algoritma. \par
-Simulirano kaljenje je algoritam koji se uglavnom primenjuje kada postoji jedno optimalno rešenje, dok se genetski primenjuje u slučaju postojanja vise optimalnih rešenja. Ovu ideju koristimo u algoritmu genetskog kaljenja. \par
-Genetski algoritam kroz iteracije evoluira ka boljim rešenjima od pocetno zadatih resenja. U svakoj iteraciji neophodno je odabrati jedinke za ukrštanje i mutaciju. Algoritam genetskog kaljenja ideju simuliranog kaljenja koristi u procesu odabira jedinki.
+Dve osnovne metaheuristike koje pripadaju široj grupi algoritama pretage su simulirano kaljenje i genetski algoritam. Sa idejom da se iskoriste prednosti obe metoda nastaje genetsko kaljenje.\cite{gk_master_rad} Tvorac koncepta je Kenneth Price koji je 1994. u svom članku u časopisu "Dr.Bobbs Journal" prvi put izneo ideju o spajanju simuliranog kaljenja i genetskog algoritma. \par
+Simulirano kaljenje je algoritam koji se uglavnom primenjuje kada postoji jedno optimalno rešenje, dok se genetski primenjuje u slučaju postojanja više optimalnih rešenja. Ovu ideju koristimo u algoritmu genetskog kaljenja. \par
+Genetski algoritam kroz iteracije evoluira ka boljim rešenjima od početno zadatih resenja. U svakoj iteraciji neophodno je odabrati jedinke za ukrštanje i mutaciju. Algoritam genetskog kaljenja ideju simuliranog kaljenja koristi u procesu odabira jedinki.
 
 
 \subsection{Eksperimentalni rezultati}
 
-U ovom poglavlju cemo prikazati rezultate primene genetskog kaljenja i uporediti ih sa rezultatima dobijenih simuliranim kaljenjem i genetskim algoritmom. Primeri ce nam biti problem trgovackog putnika i lokacijski problem rutiranja inventara. Cilj je da pokazemo da je hibridizovani pristup bolji od oba zasebna algoritma.   \\ 
+U ovom poglavlju ćemo prikazati rezultate primene genetskog kaljenja i uporediti ih sa rezultatima dobijenih simuliranim kaljenjem i genetskim algoritmom. Primeri će nam biti problem trgovačkog putnika i lokacijski problem rutiranja inventara. Cilj je da pokažemo da je hibridizovani pristup bolji od obe zasebne metaheuristike.   \\ 
 
 
-\subsubsection{Problem trgovackog putnika (TSP) (c)}
+\subsubsection{Problem trgovačkog putnika (TSP) \cite{gannealingthesis}}
 
-Broj gradova na kome testiramo ce biti 40. Kod genetskog kaljenja broj jedinki pocetne populacije ce biti 5, dok ce u svakoj narednoj generaciji broj jedinki biti 8. Broj uzastopnih izvrsavanja simuliranog kaljenja ce biti 40. Maksimalan broj iteracija za oba algoritma ce biti 2400. Rezultati dobijeni na 10 razlicitih primera su prikazani u tabeli \ref{tabela:1}. \\ 
+Broj gradova na kome testiramo će biti 40. Kod genetskog kaljenja broj jedinki početne populacije će biti 5, dok će u svakoj narednoj generaciji broj jedinki biti 8. Broj uzastopnih izvršavanja simuliranog kaljenja će biti 40. Maksimalan broj iteracija za oba algoritma će biti 2400. Rezultati dobijeni na 10 različitih primera su prikazani u tabeli \ref{tabela:1}. \\ 
 
-Iz prikazanog mozemo videti da smo u vecini slucajeva unapredjenom varijantom dobili bolje rezultate. Ovde su izuzetak bili 6. i 8. primer. Kod 6. smo dobili identicne rezultate, dok je u 8. primeru simulirano kaljenje dalo bolji rezultat.
+Iz prikazanog možemo videti da smo u većini slučajeva unapređenom varijantom dobili bolje rezultate. Ovde su izuzetak bili 6. i 8. primer. Kod 6. smo dobili identične rezultate, dok je u 8. primeru simulirano kaljenje dalo bolji rezultat.
 
 \newpage
 \begin{table}[ht]
@@ -248,28 +248,28 @@ Iz prikazanog mozemo videti da smo u vecini slucajeva unapredjenom varijantom do
 \end{tabular}
 \end{center}
 \label{tabela:1}
-\caption{Dobijeni rezultati na problemu trgovackog putnika}
+\caption{Dobijeni rezultati na problemu trgovačkog putnika}
 \end{table}
 
-\subsubsection{Lokacijski problem rutiranja inventara (eng. \textit{Location-Inventory-Routing Problem}, LIRP) (c)}
+\subsubsection{Lokacijski problem rutiranja inventara (eng. \textit{Location-Inventory-Routing Problem}, LIRP) \cite{gannealingaplication}}
 
 \large{Opis problema}  \normalsize
 
-Lanac elektronske trgovine cine proizvodjac, skladista i prodajni objekti. Proizvodjac salje robu skladistima, a iz njih se salje u prodajne objekte. U prodajnim objektima se roba prodaje ili putuje dalje u naredni prodajni objekat. Iz nekog od njih ako se ne proda se vraca nazad u skladiste iz kog je krenuo. Roba koja se vraca je obicno u dobrom stanju i posle samog prepakovanja moze ponovo da se vrati u prodaju. 
+Lanac elektronske trgovine cine proizvođač, skladišta i prodajni objekti. Proizvođač šalje robu skladištima, a iz njih se šalje u prodajne objekte. U prodajnim objektima se roba prodaje ili putuje dalje u naredni prodajni objekat. Iz nekog od njih ako se ne proda se vraća nazad u skladište iz kog je krenula. Roba koja se vraća je obično u dobrom stanju i posle samog prepakovanja može ponovo da se vrati u prodaju. 
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.25]{LIRP_Primer_Grafa.jpg}
-\caption{Primer mreze lanca e-trgovine}
+\caption{Primer mreže lanca e-trgovine}
 \label{fig:2}
 \end{figure}
 \newpage
-Primer jedne mreze ovog lanca trgovine se nalazi na slici \ref{fig:2}. Cvor u obliku trougla predstavlja proizvodjaca, kvadrati su skladista, a krugovi prodajna mesta. U ovom problem imamo samo jednog proizvodjaca. \par
-Poznate su nam lokacije proizvodjaca, prodajnih mesta, svih potencijalnih skladista (ne moramo sve da ih ukljucimo u lanac), troskovi transporta izmedju svaka dva cvora i svi ostali troskovi. Nas zadatak je da odredimo optimalan broj i lokacije skladista kao i rute od skladista do prodajnih objekata tako da troskovi budu sto manji. \par
-Na ovom problemu cemo prikazati rezultate dobijene primenom genetskog kaljenja i klasicnog genetskog algoritma. \\  \par
+Primer jedne mreže ovog lanca trgovine se nalazi na slici \ref{fig:2}. Čvor u obliku trougla predstavlja proizvođača, kvadrati su skladišta, a krugovi prodajna mesta. U ovom problemu imamo samo jednog proizvođača. \par
+Poznate su nam lokacije proizvođača, prodajnih mesta, svih potencijalnih skladišta (ne moramo sve da ih uključimo u lanac), troškovi transporta između svaka dva čvora i svi ostali troškovi. Naš zadatak je da odredimo optimalan broj i lokacije skladišta kao i rute od skladišta do prodajnih objekata tako da troškovi budu što manji. \par
+Na ovom problemu ćemo prikazati rezultate dobijene primenom genetskog kaljenja i klasičnog genetskog algoritma. \\  \par
 
-Funkcija cilja su ukupni troskovi i nju minimizujemo. U oba algoritma se u implementaciji koristi ruletska selekcija, a funkcija prilagodjenosti je obrnuto srazmerna funkciji cilja. Implementirani su u programskom jeziku Matlab. \\
-Algoritam je testiran na podacima \textit{Gaskell 67-29x5} iz LIRP baze podataka sa Univerziteta Aveira (c). Kao sto se iz samog naziva skupa podataka moze videti, radi se o instanci problema gde imamo 29 prodajnih mesta i 5 potencijalnih skladista. 
+Funkcija cilja su ukupni troškovi i nju minimizujemo. U oba algoritma se u implementaciji koristi ruletska selekcija, a funkcija prilagođenosti je obrnuto srazmerna funkciji cilja. Implementirani su u programskom jeziku Matlab. \\ \par
+Algoritam je testiran na podacima \textit{Gaskell 67-29x5} iz LIRP baze podataka sa Univerziteta Aveira \cite{lrp_database}. Kao što se iz samog naziva skupa podataka može videti, radi se o instanci problema gde imamo 29 prodajnih mesta i 5 potencijalnih skladišta. 
 
 \begin{figure}[h!]
 \centering
@@ -289,29 +289,29 @@ Na slici \ref{fig:3} se mogu videti najmanje vrednosti funkcije cilja u svakoj g
 \label{fig:4}
 \end{figure}
 
-Kod genetskog kaljenja u prvih 200 generacija imamo velika oscilovanja optimalnog resenja. Posle se ubrzo dolazi do optimuma koji se ne menja do zaustavljanja. Uz ukupan manji broj iteracija se dolazi do manje vrednosti funkcije cilja nego genetskim algoritmom.
+Kod genetskog kaljenja u prvih 200 generacija imamo velika oscilovanja optimalnog rešenja. Posle se ubrzo dolazi do optimuma koji se ne menja do zaustavljanja. Uz ukupan manji broj iteracija se dolazi do manje vrednosti funkcije cilja nego genetskim algoritmom.
 
-U tabeli \ref{tabela:2} se mogu videti i statistike najmanjih vrednosti funkcije cilja u svim generacijama. One su takodje na strani genetskog kaljenja. Cak je standardna devijacija znatno manja kod genetskog kaljenja, bez obzira na pocetna oscilovanja.
+U tabeli \ref{tabela:2} se mogu videti i statistike najmanjih vrednosti funkcije cilja u svim generacijama. One su takođe na strani genetskog kaljenja. Čak je i standardna devijacija znatno manja kod genetskog kaljenja, bez obzira na početna oscilovanja.
 
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{|l|c|c|c|c|} \hline
-     Algoritam & Najveca vrednost & Najmanja vrednost & Srednja vrednost & Standardna devijacija \\ \hline
+     Algoritam & Najveća vrednost & Najmanja vrednost & Srednja vrednost & Standardna devijacija \\ \hline
      Genetsko kaljenje &  1989900.00 & 1078700.00 & 1605543.33	& 262462.64 \\ \hline
      Genetski algoritam & 2410900.00 & 1142000.00 & 1644678.00 & 353993.10 \\ \hline
 \end{tabular}
 \end{center}
 \label{tabela:2}
-\caption{Dobijeni rezultati na problemu trgovackog putnika}
+\caption{Statistike najmanjih vrednosti funkcije cilja u svim generacijama}
 \end{table}
 
-Isti eksperimenti su takodje pokazali da je i procesorsko vreme izvrsavanja manje kod genetskog kaljenja. Dakle, osim sto ovaj algoritam daje bolja resenja, pokazalo se i da je racunski efikasnije. \par Vrseni su i dalji obimniji eksperimenti na ovom problemu koji su samo potvrdili sve zakljucke.
+Isti eksperimenti su takođe pokazali da je i procesorsko vreme izvršavanja manje kod genetskog kaljenja. Dakle, osim što ovaj algoritam daje bolja rešenja, pokazalo se i da je računski efikasnije. \par Vršeni su i dalji obimniji eksperimenti na ovom problemu\cite{gannealingaplication} (na istoj LIRP bazi podataka) koji su samo potvrdili sve dobijene zaključke.
 
 
 \section{Zaključak}
 \label{sec:zakljucak}
 
-Pojava metode \textbf{simuliranog kaljenja} je napravila veliki pomak u teoriji optimizacije. Sama metaheuristika (u vise ciklusa) pronalazi veoma dobra resenja. Medjutim, pokazuje se(c) da su poboljsanja svih ostalih algoritama umetanjem koncepta simuliranog kaljenja jos znacajnija. Time nastajanju veoma mocni algoritmi.
+Pojava metode \textbf{simuliranog kaljenja} je napravila veliki pomak u teoriji optimizacije. Sama metaheuristika (u više ciklusa) pronalazi veoma dobra rešenja. Međutim, pokazuje se \cite{gannealingthesis, gannealingaplication} da su poboljšanja svih ostalih algoritama umetanjem koncepta simuliranog kaljenja još značajnija. Time nastaju veoma moćni algoritmi.
 
 
 \newpage
