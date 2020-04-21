@@ -1,0 +1,329 @@
+
+
+ % !TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper]{report}
+
+\usepackage[T2A]{fontenc} % enable Cyrillic fonts
+\usepackage[utf8x,utf8]{inputenc} % make weird characters work
+\usepackage[serbian]{babel}
+%\usepackage[english,serbianc]{babel}
+\usepackage{amssymb}
+
+\usepackage{color}
+\usepackage{url}
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
+
+\newcommand{\odgovor}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\title{Pristup optimizaciji simuliranim kaljenjem sa primenama\\ \small{Aleksandra Bošković, Stefan Jaćović,\\Milena Stojić, Rajko Jegdić}}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Recenzent \odgovor{--- ocena:5} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+Simulirano kaljenje je algoritam pretrage. Bitno je odrediti parametre kao što su početna temperatura, početno rešenje, funkcija cilja i verovatnoća prihvatanja lošijeg rešenja. Dati su primeri korišćenja algoritma na problem trgovačkog putnika i  problem rutiranja inventara. Istaknute su mane i prednosti algoritma kao i moguća poboljšanje preko hibrida simuliranog kaljenja i genetskog algoritma.
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+Rad je veoma dobro i kompaktno napisan. Slike su na dobar način iskorišćene. Programski kod je veoma dobar, ali nije bio neophodan jer postoji pseudo kod. Rad može da se dopuni još nekim primerom, jer su navedeni primeri veoma interesantni. 
+Međutim, naslov rada je zbunjujuć jer je tako zadata tema veoma  široka i nije usredređena na simulirano kaljenje. Tabela 2 nije estetski dobra, jer upada u margine. Reference na tabele nisu dobre i treba ih popraviti. 
+\odgovor {Konkretna implementacija problema u konkretnom programskom jeziku je ostavljena iz razloga sto primer služi da dodatno pojasni način korišćenja algoritma.Naslov rada je izmenjen.Tabelu nije bilo moguće predstaviti manje pa je jedna kolona na koju nije u tekstu referencirano izbačena da bi se uklopila.Reference na tabele su pokušane da se isprave ali neznamo razlog zasto se ovako prevodi u pdf iz .tex datoteke}
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+\begin{description}
+
+\item [2. strana] Uvod- prevažilaženje -> prevazilaženje
+\odgovor {Ispravljeno.}
+
+\item [3. strana] 
+
+\begin{itemize}
+\item Potreban je razmak pre reči maximum (maksimum).
+\odgovor {Ispravljeno.}
+\item Definisanje termina  - nedostaje razmak iza zareza kada se definiše funkcija f.
+\odgovor {Ispravljeno.}
+\item Navesti dobro slovo $\mathbb{R}$  za skup realnih brojeva.
+\odgovor {Ispravljeno.}
+\item Potreban je razmak posle tačke kod rečenice: Ukoliko postoji ...
+\odgovor {Ispravljeno.}
+\item Napisati $\omega^*$ umesto $\omega*$.
+\odgovor {Ispravljeno.}
+\item U jednačini je potreban razmak posle zareza.
+\odgovor {Ispravljeno.}
+\item maximum -> maksimum (javlja se nekoliko puta u radu. Nije velika greška iako se ostavi, ali u srpskom jeziku pravilno je pisati maksimum).
+\odgovor {Ispravljeno.}
+\item Potreban je razmak posle tačke kod rečenice: Da bi ovako $\omega$...
+\odgovor {Ispravljeno.}
+\item Potreban je razmak posle tačke kod rečenice: Definišimo i funkciju ...
+\odgovor {Ispravljeno.}
+\item prailom -> pravilom
+\odgovor {Ispravljeno.}
+\item Potreban je razmak posle tačke kod rečenice, Da bismo rešili ovakve ...ž
+\odgovor {Ispravljeno.}
+\item  Da bismo rešili ovakve probleme algoritam simuliranog kaljenja za odluku koje od dva rešenja  će uzeti za sledeću iteraciju bazirana verovatnoći p prihvatljivosti da novo rešenje bude uzeto za trenutno u narednoj iteraciji. Popraviti je. Staviti zareze ili je preformulisati.
+\odgovor {Ispravljeno.}
+\item U jednačini sa za verovatnoću napisati pravilno zareze. Zarez treba da se nalazi posle izraza, a pre uslova.
+\odgovor {Ispravljeno.}
+\item 2.3 Potreban je razmak posle zareza u rečenici: Ulaz: Inicijalno rešenje...
+\odgovor {Ispravljeno.}
+\end{itemize}
+
+\item [4. strana] 
+
+\begin{itemize}
+\item  U rečenici, Da bi problem rešili algoritmom simuliranog kaljenja definišemo prvo šta nam predstavlja temperatura \underline{iz ovog algoritma}. (nepotrebne su reči, vidi se na šta se misli ali je malo konfuzno napisano).
+\odgovor {Ispravljeno.}
+\item  predhodno -> prethodno.
+\odgovor {Ispravljeno.}
+\item nacina -> načina.
+\odgovor {Ispravljeno.}
+\item šoftverski -> softverski. 
+\odgovor {Ispravljeno.}
+\item  Napisan je navodnik ali nije poznato na šta se odnosi.
+\odgovor {Ispravljeno.}
+\end{itemize}
+
+\item [5. strana] 
+
+\begin{itemize}
+\item izmenđu->između
+\odgovor {Ispravljeno.}
+\item Primer 2.1 podebljati \textbf{i} i \textbf{j}.
+\odgovor {Ispravljeno.}
+\item Primer 2.1 pocetni -> početni.
+\odgovor {Ispravljeno.}
+\end{itemize}  
+
+\item [6. strana] 
+\begin{itemize}
+\item resenju->rešenju
+\odgovor {Ispravljeno.}
+\item Navode se imena osoba na engleskom jeziku, dok se na strani 2  navodi ime na srpskom jeziku. Opredeliti se za jedan pristup (po srpskoj  gramatici pravilno je pisati na srpskom jeziku).
+\item  Đr. razmak ime. 
+\odgovor {Ispravljeno.}
+\item Pogledati da li je ispravno Đr. 
+\odgovor {Ispravljeno.}
+\item Navodnik se našao na kraju rečenice ali se ne zna na šta se odnosi .
+\odgovor {Ispravljeno.}
+\item  Loša referenca na tabelu 1. Trenutna referenca se odnosi na podnaslov.
+\end{itemize}
+
+\item [7.strana] 
+\begin{itemize}
+\item 3.3.2 cine->čine
+\odgovor {Ispravljeno.}
+\item Rečenica: Iz nekog od njih ako se ne proda se vraća nazad u skladište iz kog je krenula.\\
+nije lepo napisana. Ako je moguće preformulisati je.
+\end{itemize}
+
+\item [9.strana] 
+
+\begin{itemize}
+\item Tabela 2 je veoma široka. Ako je moguće napraviti je na drugačiji  način.
+\odgovor {Ispravljeno.Tabela je skraćena za jednu kolonu koja nije pomenuta u tekstu}
+\item Loša referenca na tabelu 2, referiše se na podnaslov 3.3.2
+\end{itemize} 
+\end{description}
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\
+Da. Tema je simulirano kaljenje koja je proširenja sa njegovom primenom i mogućom optimizacijom.
+\item Da li je nešto važno propušteno?\\
+Ne. Specifikacije seminarskog rada su ispunjene, ali uvek može da se napiše i više.
+\item Da li ima suštinskih grešaka i propusta?\\
+Nema.
+\item Da li je naslov rada dobro izabran?\\
+Naslov je promenjen ali ne ukazuje na simulirano kaljenje. Kada se čita prepoznaje se ideja iza naslova.
+\item Da li sažetak sadrži prave podatke o radu?\\
+Sadrži. Nije predugačak ali je dovoljan.
+\item Da li je rad lak-težak za čitanje?\\
+Malo je konfuzan za čitanje. Ali ako se udubi u temu postaje jasno, što je i bitno.
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+Potrebno je preznanje zbog primera koji podrazumevaju znanje iz oblasti veštačke inteligencije, ali ne u velikoj meri.
+\item Da li je u radu navedena odgovarajuća literatura?\\
+Navedena literatura je vezana za temu koja se obrađuje.
+\item Da li su u radu reference korektno navedene?\\
+Reference na radove su dobro navedene, potrebno je popraviti reference na tabele.
+\item Da li je struktura rada adekvatna?\\
+Jeste. Rad je napisan onako kao što se navelo u zahtevima. 
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
+Sadrži. 
+\item Da li su slike i tabele funkcionalne i adekvatne?\\
+Tabela 2 je problematična i reference na tabele su pogrešne (referišu podnaslove).
+Slike su u redu.
+\end{enumerate}
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+Srednje sam upućena. Izučavalo se na fakultetu, istraživala sam 
+o simuliranom kaljenju i hibridima koji sadrže simulirano kaljenje.
+\chapter{Recenzent \odgovor{--- ocena: 4} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+Rad koji sam dobila na recenziranje ima kao primarni zadatak da opiše Simulirano kaljenje, metaheuristiku koja rešava problem kombinatorne optimizacije i koja je podstakla razvoj mnogih metaheurističkih algoritama. Simulirano kaljenje je metoda koja uz mehanizam inspirisan metalurškim kaljenjem čelika omogućava izlazak iz lokalnog optimuma. U radu je takođe opisano i Genetsko kaljenje i napravljena paralela između ove dve metode, kao i najčešće primene istih.
+
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+Najpre bih pohvalila kolege koji su autori ovog rada- uživala sam čitajući ga a ujedno i saznala neke nove podatke o datoj temi. Ono što bih im predložila da izmene u radu kako bi bio još kompletniji su sledeće stvari: S obzirom da imaju primere rešavanja problema pomoću genetskog kaljenja, bilo bi dobro navesti pseudokod i ovog algoritma i malo detaljnije od ovoga što je trenutno, opisati njegovu primenu. Takođe, uvodni deo kao i deo 2.4 ima dosta zanimljivih, lepo objašnjenih i korisnih detalja ali monotono, pravolinijski napisano i blago nabacano. Izdvojiti neke delove, boldovati, ubaciti neki novi red/veći razmak, organizovati malo bolje kako bi svi detalji došli do izražaja.
+Takođe, zaključak malo trebalo razraditi, deluje nedovršeno i naglo prekinuto.
+\odgovor {Izmenjen je uvod tako što su delovi teksta izdvojeni u zasebne sekcije}
+\odgovor {Dodat je pseudo kod za genetsko kaljenje na strani 6 u odeljku 3.2 Genetsko kaljenje}
+
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+Na pojedinim mestima 'progutano' slovo u reči, napisana reč u jednini umesto množini i obrnuto. U jednom delu rada, posle tačke kao oznake za kraj rečenice nedostaje razmak(gotovo u svim rečenicama u tom delu). U istom delu rada, isto se primećuje i sa zarezima. Kod citiranja navodnici nisu upareni(svuda gde su se koristili). Prilagoditi da font bude isti u celom tekstu.
+Na fotografijama koje su ubačene, tekst je na engleskom, adekvatnije bi bilo prevesti ga na srpski.
+Poslednja tabela u radu, prelazi poprilično margine, bilo bi preglednije da se tabela smanji ili na neki drugi način prilagodi strani.
+\odgovor {Ispravljene su sintaksne greske.Tabelu nije bilo moguće predstaviti manje pa je jedna kolona na koju nije u tekstu referencirano izbačena da bi se uklopila.Reference na tabele su pokušane da se isprave ali neznamo razlog zasto se ovako prevodi u pdf iz .tex datoteke}
+
+
+
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\
+Rad u potpunosti odgovara zadatoj temi.
+\item Da li je nešto važno propušteno?\\
+Kolege su obuhvatile sve neophodne činjenice o datoj temi.
+\item Da li ima suštinskih grešaka i propusta?\\
+Nema suštinskih grešaka i propusta u radu.
+\item Da li je naslov rada dobro izabran?\\
+Naslov rada je solidan, mada ne daje na 'prvu loptu' jasnu informaciju o kojem se pristupu tačno govori u nastavku. Prethodna verzija naslova 'Simulirano kaljenje' je možda preciznija i jasnija, s obzirom da je akcenat na tom algoritmu i poređenjima sa njim.
+\item Da li sažetak sadrži prave podatke o radu?\\
+Sažetak rada je dobar, motiviše čitaoce da pročitaju rad, pruža prave uvodne podatke o radu.
+\item Da li je rad lak-težak za čitanje?\\
+Rad je lak i jasan za čitanje.
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+Nije potrebno neko 'specijalno' predznanje, posebno ne za studetne Informacionih tehnologija. Takođe, autori rada su većinu pojmova koji se po prvi put koriste ukratko objasnili i definisali (tamo gde je bilo potrebe).
+\item Da li je u radu navedena odgovarajuća literatura?\\
+Da, rad poštuje sva pravila navođenja literature: 7+ izvora, adekvatni naslovi, citirani u okviru rada.
+\item Da li su u radu reference korektno navedene?\\
+Reference su korektno navedene i poštuju pravila navođenja obrađena na predavanju.
+\item Da li je struktura rada adekvatna?\\
+Struktura rada jeste adekvatna, ispoštovane su sve celine koje seminarski rad treba da sadrži.
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
+Rad sadrži sve elemente.
+\item Da li su slike i tabele funkcionalne i adekvatne?\\
+Slike i tabele su adekvatne sadržaju rada, pomažu čitaocu da bolje i lakše razume određene analize, poređenja.
+\end{enumerate}
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+Kao student Informatike na našem fakultetu, rekla bih da sam srednje upućena u ovu oblast. Imala sam priliku da se susretnem sa istom na par kurseva tokom studija kao i prilikom rada na projektima sa povezanom tematikom, za koje sam se samostalno informisala. 
+
+\chapter{Recenzent \odgovor{--- ocena: 4} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+Rad govori simuliranom kaljenju kao tehnici optimizacije. Dat je opis algoritma, implementacija, primena na TSP. Nakon toga dato je poboljšanje algoritma, odnosno hibridizacija dve metaheuristike i rezultati primene na TSP i LIRP. Upoređeni su rezultati dobijeni hribridnim i zasebnim pristupom čime je utvrđeno da je hibridni pristup efikasniji kako u pogledu rešenja tako i u dužini procesorskog vremena.
+
+
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+\begin{itemize}
+	\item \textbf{Uvod}\newline
+	Postoji samo jedna referenca i to nakon druge rečenice iz čega nije jasno da li su informacije iz čitavog poglavlja sa istog izvora, stoga ostatak teksta treba potkrepiti referencama na izvor priloženih podataka. Bilo bi poželjno podeliti uvod u više pasusa tako da predstavljaju manje logičke celine (uvođenje pojma i vreme nastanka, opis metalurškog kaljenja, analogija sa algoritmom, opis metode). Trebalo bi takođe predstaviti cilj rada i naznačiti glavne rezultate.
+	\odgovor {Izmenjen je uvod tako što su delovi teksta izdvojeni u zasebne sekcije}
+	\item \textbf{Zaključak}\newline
+	Može se dodati koji su još pravci istraživanja na ovu temu.
+	\odgovor {Postoji predlog za dalje istraživanje u vidu referenci.}
+\end{itemize}
+
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+Greške koje se ponavljaju kroz rad:
+\begin{itemize}
+	\item ošišana latinica
+	\item nepostojanje razmaka nakon interpunkcijskih znakova (odeljak 2.1)
+	\item neispravno napisane reči (prailom, prevažilaženja, šoftverski, algotitma) 
+	\item mešanje srpskog i engleskog jezika (maksimum i maximum), izmeniti strane u srpske termine
+	\item navođenje reference nakon tačke (po pravilu reference se navode pre tačke ako se odnose na tu rečenicu ili pored konkretnog pojma ako se odnose na njega)
+	\item na nekim mestima se referenca nalazi sa razmakom, na nekim bez razmaka od reči, predlog je da budu sa razmakom 
+	
+	\odgovor {Sve navedene greške su izmenjene.}
+\end{itemize}
+
+Ostale greške:
+\begin{itemize}
+	\item Odeljak 2.4, 3.2 - u 2.4 znaci navoda nakon izraza \textit{novčić}, a u 3.2 nakon naziva časopisa (verovatno greška prilikom referenciranja)
+	\item Odeljak 3.3.2 - podnaslov \textit{Opis problema} ima preveliki font
+		\odgovor {Sve navedene greške su izmenjene.}
+\end{itemize}
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+	\item Da li rad dobro odgovara na zadatu temu?\\Da, postoji opis algoritma, implementacija, primena na problem i unapređenje rešenja.
+	\item Da li je nešto važno propušteno?\\
+	Ne, svi neophodni delovi su pokriveni.
+	\item Da li ima suštinskih grešaka i propusta?\\
+	Nema, informacije su ispravne i predstavljena je suština zadate teme.
+	\item Da li je naslov rada dobro izabran?\\ 
+	Po mom mišljenju nije informativan i precizan, jer ne daje akcenat na ključni pojam ovog rada. Postoji dosta tehnika optimizacije i kada bismo pretraživali konkretno simulirano kaljenje i njegova unapređenja, ne mislim da bismo ga tražili pod ovim ključnim rečima. Možda bi trebalo u njemu spomenuti i \textit{genetsko kaljenje} jer se iz njega dobilo poboljšanje algoritma. Savet je suziti naslov na glavne koncepte rada.
+	\item Da li sažetak sadrži prave podatke o radu?\\
+	Sažetak je vrlo kratak i ne daje pravi pregled teme koja je predstavljena istraživanjem. Rečenice nisu gramatički ispravne. Savet je da treba preformulisati rečenice tako da budu ispravne (obaveštajne) i dodati osvrt na radom obuhvačenu temu - dakle, simulirano i genetsko kaljenje. 
+	\item Da li je rad lak-težak za čitanje?\\ 
+	Rad nije težak za čitanje s tim što bi neke rečenice trebalo napisati stilski bolje kako bi bile lakše za razumevanje. \newline
+	Na primer, u poglavlju 2.4 rečenica: \textit{"Medutim, ako dode do povećanja troškova, eksponencija njegove negativne veličine deljenja sa trenutnom temperaturom uporeduje se sa
+		jednolično raspodeljenim slučajnim brojem izmendu 0 i 1, a ako je veće modifikovana putanja će se koristi iako je povećala troškove."} je nejasna, proveriti da li postoji termin \textit{eksponencija} i ako je moguće sročiti rečenicu na razumniji način ili je razdeliti na više rečenica.
+	\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\ 
+	Dovoljno je znanje ključnih koncepata optimizacije, dok se  ideja o simuliranom kaljenju se može steći iz ovog rada.
+	\item Da li je u radu navedena odgovarajuća literatura?\\ Jeste.
+	\item Da li su u radu reference korektno navedene?\\
+	U odeljku 1 dosta informacija nema izvor.\newline
+	U odeljcima 2 i 3 postoji greška u refernciranju.\newline
+	U odeljku 3 reference su stavljene nakon tačke a trebalo bi pre.\newline
+	Reference možda ne treba navoditi u naslovima već u samom tekstu.
+	\item Da li je struktura rada adekvatna?\\
+	Da, rad obuhvata sve potrebne delove.
+	\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\ 
+	Table i slike se nalaze u radu. \newline
+	Rad ima 10 strana, što ispunjava uslov (10-12) međutim poslednja strana je delom prazna i sadrži samo literaturu.
+	\item Da li su slike i tabele funkcionalne i adekvatne?\\
+	Da, samo su potrebne male stilske izmene. \newline
+	Na slikama 2, 3 i 4 su natpisi i nazivi osa na engleskom, a rad je na srpskom stoga i natpisi treba da budu na tom jeziku.\newline
+	Tabela statistika je izlazi iz okvira, potrebno je da se skalira.
+	
+\end{enumerate} 
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+b) veoma upućena u oblast \newline
+Ovu temu smo obradili u okviru kursa Računarska inteligencija.
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+
+\chapter{Dodatne izmene}
+%Ovde navedite ukoliko ima izmena koje ste uradili a koje vam recenzenti nisu tražili. 
+
+\end{document}
